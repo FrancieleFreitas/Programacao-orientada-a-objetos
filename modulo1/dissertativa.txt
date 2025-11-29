@@ -1,0 +1,37 @@
+**Paradigma Escolhido:** Programação Orientada a Objetos (POO)
+
+**Justificativa:**
+
+O paradigma de Programação Orientada a Objetos (POO) é o mais adequado para o sistema de gerenciamento da biblioteca, pois permite modelar as entidades do mundo real (Livro, Autor, Usuario, Emprestimo) de forma coesa e escalável.
+
+**Fatores Chave:**
+
+**Estrutura e Interação das Entidades:** A POO mapeia diretamente as entidades em classes, onde cada objeto (por exemplo, um Livro específico) encapsula seus próprios dados (Título, Gênero) e seu comportamento. As interações são claras, como um objeto 'Emprestimo' associando um 'Usuario' e um 'Livro'.
+
+**Reuso:** A POO facilita o reuso de código através de conceitos como Herança. No futuro, se houver diferentes tipos de usuários ou publicações, novas classes podem herdar atributos e métodos de classes base, evitando a duplicação de lógica.
+
+**Evolução do Sistema:** O Encapsulamento, pilar da POO, garante que as regras de negócio de uma classe (como a verificação de aptidão de um Usuário) possam ser alteradas internamente sem quebrar o restante do sistema, tornando a manutenção e a evolução muito mais seguras e fáceis.
+
+**Eficiência:** Para um sistema complexo com diversas regras de negócio e interconexões, a POO oferece uma organização superior, o que resulta em maior clareza de código e eficiência no desenvolvimento a longo prazo, em comparação com paradigmas puramente estruturados ou imperativos.
+
+
+**Métodos Identificados com Base nos Fluxos do Sistema:**
+
+Os seguintes métodos devem ser adicionados às classes para implementar as regras de negócio:
+
+**Classe Livro:**
+* `cadastrarLivro(titulo, autor, genero)`: Para o Fluxo de Cadastro de Livros.
+* `setDisponibilidade(status: Boolean)`: Para atualizar o status do livro durante o empréstimo/devolução.
+
+**Classe Autor:**
+* `cadastrarAutor(nome, nacionalidade)`: Para o Fluxo de Cadastro de Autores.
+* `adicionarObra(livro: Livro)`: Para associar as obras ao autor.
+
+**Classe Usuario:**
+* `cadastrarUsuario(nome, idade)`: Para o Fluxo de Cadastro de Usuários.
+* `verificarAptoEmprestimo(livro: Livro): Boolean`: Para verificar a elegibilidade do usuário (livros vencidos, idade/gênero) no Fluxo de Empréstimo.
+
+**Classe Emprestimo:**
+* `registrarEmprestimo(livro: Livro, usuario: Usuario)`: Para registrar a retirada do livro e as datas.
+* `registrarDevolucao()`: Para registrar a data de devolução real e atualizar o status do livro e o histórico do usuário.
+
